@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from models.extractor import extract_text_from_docx,extract_text_from_pdf,extract_all_skills
 import pdfplumber
 import re 
+from fastapi.middleware.cors import CORSMiddleware
 from models.rewriter import get_req_skill,get_content_score,get_tone_style_score,get_structure_score,optimize_skills_section,optimize_structure
 from models.matcher import  get_skill_score,get_ats_score
 from models.rewriter import check_content,check_tone_and_style,suggest_additional_sections,get_professional_summary_suggestions
@@ -10,6 +11,15 @@ from models.rewriter import check_content,check_tone_and_style,suggest_additiona
 
 app = FastAPI()
 
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get('/')
 def start():
