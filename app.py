@@ -15,8 +15,7 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
 if ENVIRONMENT == "production":
     allowed_origins = [
-        # Add your actual deployed frontend URLs here when ready
-        # Example: "https://my-resume-app.vercel.app"
+    # "https://my-resume-app.vercel.app"
     ]
 else:
     allowed_origins = [
